@@ -1,7 +1,7 @@
 node_modules/
-
 *.txt
-
+debug.log
 .sass-cache
+.vscode
 .grunt
 *.psd
