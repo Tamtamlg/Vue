@@ -4,14 +4,14 @@
       <div class="thumbnail">
         <img class="img-thumbnail" :src="phone.image" :alt="phone.name">
         <div class="caption">
-          <h4 class="pull-right">{{phone.price}}</h4>
+          <h4 class="pull-right">{{phone.price | currency}}</h4>
           <h4>
             <router-link :to="{ name: 'Item', params: {id: index} }">{{phone.name}}</router-link>
           </h4>
-          <p>{{shortDescription(phone.description)}}</p>
+          <p>{{phone.description | readMore(70, '...')}}</p>
           <div class="itemButton">
-            <button class="btn btn-primary">Buy Now!</button>
-            <router-link :to="{ name: 'Item', params: {id: index} }" class="btn btn-default">More info</router-link>
+            <button class="btn btn-primary">Купить</button>
+            <router-link :to="{ name: 'Item', params: {id: index} }" class="btn btn-default">Подробнее</router-link>
           </div>
         </div>
       </div>
@@ -27,9 +27,12 @@ export default {
       phones: []
     };
   },
-  methods: {
-    shortDescription(string) {
-      return `${R.take(60, string)}...`;
+  filters: {
+    currency(value) {
+      return '$' + value
+    },
+    readMore(text, length, suffix) {
+      return text.substring(0, length) + suffix;
     }
   },
   created() {

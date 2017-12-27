@@ -204,7 +204,6 @@ export default {
     font-size: 34px;
 }
 .delete-cart{
-    background: url(/images/trash_16x16.gif) no-repeat 0 0;
     display: block;
     height: 16px;
     width: 16px;
